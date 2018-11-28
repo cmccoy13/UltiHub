@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">UltiHub</string>
+    <string name="my_teams">My Teams</string>
+    <string name="new_team">Create New Team</string>
+    <string name="delete_team">Delete Team</string>
+    <string name="team_name">Team Name</string>
+    <string name="player_name">Player Name</string>
+    <string name="number">Number</string>
+    <string name="position">Position</string>
+    <string name="submit">Submit</string>
+    <string name="roster">Roster</string>
+    <string name="tournaments">Tournaments</string>
+    <string name="team_stats">Team Stats</string>
+    <string name="add_tournament">Add New Tournament</string>
+    <string name="tournament_name">Tournament Name</string>
+    <string name="tournament_loc">Tournament Location</string>
+    <string name="add_player">Add New Player</string>
+    <string name="login">Login</string>
+    <string name="new_user">Create Account</string>
+    <string name="email">test@test.com</string>
+    <string name="password">password</string>
+    <string name="explanation">This will be the most interesting/complicated screen
+    in the app.  On this screen, users will be able to record the game play-by-play
+    as it is going on.  The app will create/collect stats based on what happens, and
+    these will then be stored for viewing in a different part of the app.</string>
+</resources>
