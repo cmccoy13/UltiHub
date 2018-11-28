@@ -14,6 +14,9 @@ import android.widget.Button
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_item.view.*
+import com.google.firebase.database.DataSnapshot
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class HomeActivity : AppCompatActivity() {
@@ -21,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
         val TAG = "Firebase transaction"
     }
 
-    lateinit var teamList : MutableList<Team>
+    lateinit var teamList : MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +40,14 @@ class HomeActivity : AppCompatActivity() {
 
         val teamsRef = userRef.child("teams")
 
-        teamListRecycler.layoutManager = LinearLayoutManager(this)
-        teamListRecycler.adapter = TeamAdapter(teamList, this)
-
         val createTeamButton = findViewById<Button>(R.id.createTeamButton)
         createTeamButton.setOnClickListener{
             startActivity(Intent(this, TeamCreateActivity::class.java))
         }
+
+
+        teamListRecycler.layoutManager = LinearLayoutManager(this)
+        teamListRecycler.adapter = TeamAdapter(teamList, this)
 
         teamsRef.addValueEventListener(object : ValueEventListener {
 
@@ -52,13 +56,11 @@ class HomeActivity : AppCompatActivity() {
                 dataSnapshot.run{
 
                     val teams = children.mapNotNull {
-                        it.getValue(TeamResponse::class.java)
+                        it.child("name").getValue().toString()
                     }
 
-                    val teamList = teams.map(TeamResponse::mapToTeam)
-
                     teamListRecycler.layoutManager = LinearLayoutManager(baseContext)
-                    teamListRecycler.adapter = TeamAdapter(teamList, baseContext)
+                    teamListRecycler.adapter = TeamAdapter(teams, baseContext)
                 }
             }
 
@@ -69,20 +71,16 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = TeamAdapter(teamList, this)
-    }
-
-    class TeamAdapter(val items : List<Team>, val context: Context) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
+    class TeamAdapter(val items : List<String>, val context: Context) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
         private val onClickListener : View.OnClickListener
 
         init {
             onClickListener = View.OnClickListener { v ->
-                val item = v.tag as Team
+                val item = v.tag as String
 
                 val intent = Intent(v.context, TeamDetailActivity::class.java).apply {
-                    putExtra("Name", item.name)
+                    putExtra("Name", item)
                 }
                 v.context.startActivity(intent)
             }
@@ -99,7 +97,7 @@ class HomeActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             //holder.view.tvTeamName.text = items.get(position).name
             val item = items[position]
-            holder.itemView.itemNameText.text = items.get(position).name
+            holder.itemView.itemNameText.text = items.get(position)
 
             with(holder.itemView) {
                 tag = item

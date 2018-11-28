@@ -15,8 +15,6 @@ class TeamCreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_team)
 
-        //val userID = intent.getStringExtra("id")
-
         val submitButton = findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener{
             val name = teamNameInput.text.toString()
@@ -27,15 +25,11 @@ class TeamCreateActivity : AppCompatActivity() {
                 val users = database.getReference("users")
                 val userRef = users.child(Utils.userID)
                 val teamsRef = userRef.child("teams")
-                val newTeam = Team(name, ArrayList<Tournament>(), ArrayList<Player>())
+                //val newTeam = Team(name, ArrayList<Tournament>(), ArrayList<Player>())
                 val myTeam = teamsRef.child(name)
                 myTeam.child("name").setValue(name)
-                //myTeam.child("Tournaments").child("name").setValue("Tourney1")
-                //myTeam.child("Players").child("McCoy").child("Number").setValue(13)
 
-                var intent = Intent(this, HomeActivity::class.java)
-                //intent.putExtra("id", userID)
-                startActivity(intent)
+                finish()
             }
         }
     }
