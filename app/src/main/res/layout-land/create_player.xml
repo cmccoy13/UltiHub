@@ -8,68 +8,96 @@
             android:layout_height="53dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/playerPosInput" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="469dp" android:layout_marginRight="469dp"
-            app:layout_constraintStart_toEndOf="@+id/textView7" android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp" android:layout_marginTop="38dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText" android:layout_marginBottom="80dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"/>
+            app:layout_constraintStart_toEndOf="@+id/playerPosText" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/playerNumInput" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox"/>
     <TextView
             android:text="@string/player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5" android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="197dp"
+            android:id="@+id/playerNameText" android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="150dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="438dp"
-            android:layout_marginStart="438dp" app:layout_constraintEnd_toStartOf="@+id/editText2"
-            android:layout_marginEnd="21dp" android:layout_marginRight="21dp"/>
+            android:layout_marginStart="438dp" app:layout_constraintEnd_toStartOf="@+id/playerNameInput"
+            android:layout_marginEnd="24dp" android:layout_marginRight="24dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/playerNumText"/>
     <TextView
             android:text="@string/number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView6" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/playerNumText" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="488dp" android:layout_marginStart="488dp"
-            app:layout_constraintEnd_toStartOf="@+id/editText" android:layout_marginEnd="23dp"
-            android:layout_marginRight="23dp" android:layout_marginBottom="53dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView7" android:layout_marginTop="46dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+            app:layout_constraintEnd_toStartOf="@+id/playerNumInput" android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/playerPosText" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/playerNameText"/>
     <TextView
             android:text="@string/position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView7" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="488dp" android:layout_marginStart="488dp" android:layout_marginTop="53dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toStartOf="@+id/editText3" android:layout_marginEnd="21dp"
-            android:layout_marginRight="21dp"/>
-    <Button
-            android:text="Not implemented"
+            android:id="@+id/playerPosText" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="488dp" android:layout_marginStart="488dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/playerNumText"
+            app:layout_constraintEnd_toStartOf="@+id/playerPosInput" android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/playerCaptainText"/>
+    <TextView
+            android:text="@string/captain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="130dp"
+            android:id="@+id/playerCaptainText" android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="488dp" android:layout_marginStart="488dp"
+            app:layout_constraintEnd_toStartOf="@+id/playerPosInput" android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp" app:layout_constraintHorizontal_bias="0.138"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/playerPosInput"
+            android:layout_marginBottom="32dp" app:layout_constraintBottom_toTopOf="@+id/createPlayerButton"
+            app:layout_constraintVertical_bias="0.673"/>
+    <Button
+            android:text="@string/new_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/createPlayerButton"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="76dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="564dp"
             android:layout_marginStart="564dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="563dp" android:layout_marginRight="563dp"
+            app:layout_constraintHorizontal_bias="0.492"
     />
     <EditText
             android:layout_width="71dp"
             android:layout_height="39dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" app:layout_constraintStart_toEndOf="@+id/textView6"
-            android:layout_marginLeft="23dp" android:layout_marginStart="23dp" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/playerNumInput"
+            app:layout_constraintStart_toEndOf="@+id/playerNumText"
+            android:layout_marginLeft="24dp" android:layout_marginStart="24dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="613dp" android:layout_marginRight="613dp"
-    />
+            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/playerPosInput"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/playerNameInput"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="53dp"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="190dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="469dp"
-            android:layout_marginRight="469dp" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/editText" app:layout_constraintStart_toEndOf="@+id/textView5"
-            android:layout_marginLeft="20dp" android:layout_marginStart="20dp"/>
+            android:id="@+id/playerNameInput"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="476dp"
+            android:layout_marginRight="476dp"
+            android:layout_marginTop="150dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/playerNameText" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/playerNumInput"/>
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/playerCaptainText" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/playerPosInput"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/createPlayerButton" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="506dp" android:layout_marginRight="506dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>

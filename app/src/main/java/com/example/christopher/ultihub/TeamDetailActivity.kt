@@ -41,7 +41,7 @@ class TeamDetailActivity : AppCompatActivity() {
         tournamentListRecycler.layoutManager = LinearLayoutManager(this)
         tournamentListRecycler.adapter = TournamentAdapter(tournamentList, this)
         playerListRecycler.layoutManager = LinearLayoutManager(this)
-        playerListRecycler.adapter = PlayerAdapter(playerList, this)
+        playerListRecycler.adapter = PlayerAdapter(playerList, this, name)
 
         teamName.text = team.key
 
@@ -55,7 +55,7 @@ class TeamDetailActivity : AppCompatActivity() {
         }
 
         addPlayerButton.setOnClickListener{
-            startActivity(Intent(this, PlayerCreateActivity::class.java))
+            startActivity(Intent(this, PlayerCreateActivity::class.java).putExtra("teamName", name))
         }
 
         teamStatsButton.setOnClickListener{
@@ -98,7 +98,7 @@ class TeamDetailActivity : AppCompatActivity() {
                     val playerList = players.map(PlayerResponse::mapToPlayer)
 
                     playerListRecycler.layoutManager = LinearLayoutManager(baseContext)
-                    playerListRecycler.adapter = PlayerAdapter(playerList, baseContext)
+                    playerListRecycler.adapter = PlayerAdapter(playerList, baseContext, name)
                 }
             }
 
@@ -149,7 +149,7 @@ class TeamDetailActivity : AppCompatActivity() {
         }
     }
 
-    class PlayerAdapter(val items : List<Player>, val context: Context) : RecyclerView.Adapter<PlayerAdapter.ViewHolder>() {
+    class PlayerAdapter(val items : List<Player>, val context: Context, val teamName : String) : RecyclerView.Adapter<PlayerAdapter.ViewHolder>() {
 
         private val onClickListener : View.OnClickListener
 
@@ -157,8 +157,12 @@ class TeamDetailActivity : AppCompatActivity() {
             onClickListener = View.OnClickListener { v ->
                 val item = v.tag as Player
 
-                val intent = Intent(v.context, TeamDetailActivity::class.java).apply {
-                    putExtra("Name", item.name)
+                val intent = Intent(v.context, PlayerCreateActivity::class.java).apply {
+                    putExtra("teamName", teamName)
+                    putExtra("playerName", item.name)
+                    putExtra("playerNum", item.number)
+                    putExtra("playerPos", item.position)
+                    putExtra("playerCaptain", item.captain.toString())
                 }
                 v.context.startActivity(intent)
             }
