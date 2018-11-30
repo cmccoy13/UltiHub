@@ -30,8 +30,8 @@ class LiveGameActivity : AppCompatActivity() {
         val tournamentName = intent.getStringExtra("tournamentName")
         val opponent = intent.getStringExtra("opponent")
         val maxScore = intent.getStringExtra("maxScore")
-        val startHour = intent.getIntExtra("startHour")
-        val startMinute = intent.getIntExtra("startMinute")
+        val startHour = intent.getStringExtra("startHour")
+        val startMinute = intent.getStringExtra("startMinute")
         val softCap = intent.getStringExtra("softCap")
         val hardCap = intent.getStringExtra("hardCap")
         val tosPerHalf = intent.getStringExtra("tosPerHalf")
@@ -45,8 +45,8 @@ class LiveGameActivity : AppCompatActivity() {
         val simpleTimeFormat = SimpleDateFormat("HH:mm:ss")
         val currentMS = Calendar.getInstance().timeInMillis
         var startTime = Calendar.getInstance()
-        startTime.set(Calendar.HOUR_OF_DAY, startHour)
-        startTime.set(Calendar.MINUTE, startMinute)
+        startTime.set(Calendar.HOUR_OF_DAY, startHour.toInt())
+        startTime.set(Calendar.MINUTE, startMinute.toInt())
         val startMS = startTime.timeInMillis
 
         val timeUntilStart = startMS-currentMS
@@ -54,7 +54,7 @@ class LiveGameActivity : AppCompatActivity() {
         object : CountDownTimer((timeUntilStart + hardCap.toInt()*60*1000), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                gameClockText.setText("" + ((millisUntilFinished/60)%60) + ":" + (millisUntilFinished / 1000)%60)
+                gameClockText.setText("" + ((millisUntilFinished / 1000)/60) + ":" + (millisUntilFinished / 1000)%60)
             }
 
             override fun onFinish() {
@@ -65,8 +65,4 @@ class LiveGameActivity : AppCompatActivity() {
         ourTeamText.text = teamName
         opponentTeamText.text = opponent
     }
-}
-
-private fun Intent.getIntExtra(s: String): Int {
-    return s.toInt()
 }
