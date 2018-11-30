@@ -53,7 +53,7 @@ class TournamentDetailActivity : AppCompatActivity() {
                 dataSnapshot.run{
 
                     val games = children.mapNotNull {
-                        it.child("name").getValue().toString()
+                        it.child("title").getValue().toString()
                     }
 
                     gameListRecycler.layoutManager = LinearLayoutManager(baseContext)

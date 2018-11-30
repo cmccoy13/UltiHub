@@ -4,12 +4,92 @@
                                              android:layout_height="match_parent">
 
     <TextView
-            android:layout_width="441dp"
-            android:layout_height="87dp"
-            android:id="@+id/textView4" android:text="@string/explanation" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="420dp" android:layout_marginStart="420dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="342dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="419dp"
-            android:layout_marginRight="419dp" android:layout_marginTop="234dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:text="theirTimeouts"
+            android:layout_width="173dp"
+            android:layout_height="41dp"
+            android:id="@+id/opponentTimeoutsText" app:layout_constraintStart_toEndOf="@+id/opponentScoreText"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/opponentTeamText"
+            android:layout_marginBottom="38dp" app:layout_constraintBottom_toTopOf="@+id/rosterRecycler"/>
+    <fragment
+            android:id="@+id/game_fragment"
+            class="com.example.christopher.ultihub.LiveGameFragment"
+            android:layout_width="473dp"
+            android:layout_height="570dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="29dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gameplayRecycler" android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp" tools:layout="@layout/fragment_live_game"
+            app:layout_constraintVertical_bias="0.75"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="306dp"
+            android:layout_height="568dp"
+            android:id="@+id/rosterRecycler" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/gameplayRecycler" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="57dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.578"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="416dp"
+            android:layout_height="568dp"
+            android:id="@+id/gameplayRecycler" android:layout_marginLeft="18dp" android:layout_marginStart="18dp"
+            app:layout_constraintStart_toEndOf="@+id/game_fragment" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="57dp" app:layout_constraintEnd_toStartOf="@+id/rosterRecycler"
+            android:layout_marginEnd="44dp" android:layout_marginRight="44dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.578"/>
+    <TextView
+            android:text="ourName"
+            android:gravity="center"
+            android:layout_width="238dp"
+            android:layout_height="77dp"
+            android:id="@+id/ourTeamText" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/game_fragment"
+            app:layout_constraintEnd_toStartOf="@+id/ourTimeoutsText"/>
+    <TextView
+            android:text="theirName"
+            android:gravity="center"
+            android:layout_width="238dp"
+            android:layout_height="77dp"
+            android:id="@+id/opponentTeamText" android:textSize="30sp"
+            android:layout_marginBottom="2dp" app:layout_constraintBottom_toTopOf="@+id/rosterRecycler"
+            app:layout_constraintStart_toEndOf="@+id/opponentTimeoutsText" android:layout_marginLeft="1dp"
+            android:layout_marginStart="1dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="Clock"
+            android:gravity="center"
+            android:layout_width="265dp"
+            android:layout_height="85dp"
+            android:id="@+id/gameClockText" android:textSize="36sp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/ourScoreText"
+            android:layout_marginBottom="6dp" app:layout_constraintBottom_toTopOf="@+id/gameplayRecycler"
+            app:layout_constraintEnd_toStartOf="@+id/opponentScoreText" android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"/>
+    <TextView
+            android:text="0"
+            android:gravity="center"
+            android:layout_width="97dp"
+            android:layout_height="61dp"
+            android:id="@+id/ourScoreText" app:layout_constraintStart_toEndOf="@+id/ourTimeoutsText"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/game_fragment"
+            app:layout_constraintEnd_toStartOf="@+id/gameClockText" android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp" android:textSize="36sp"/>
+    <TextView
+            android:text="0"
+            android:layout_width="97dp"
+            android:gravity="center"
+            android:layout_height="61dp"
+            android:id="@+id/opponentScoreText"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/gameClockText"
+            android:layout_marginBottom="18dp" app:layout_constraintBottom_toTopOf="@+id/gameplayRecycler"
+            app:layout_constraintEnd_toStartOf="@+id/opponentTimeoutsText" android:textSize="36sp"/>
+    <TextView
+            android:text="ourTimeouts"
+            android:layout_width="173dp"
+            android:layout_height="41dp"
+            android:id="@+id/ourTimeoutsText" app:layout_constraintStart_toEndOf="@+id/ourTeamText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ourScoreText" android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp" android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toTopOf="@+id/game_fragment"/>
 </android.support.constraint.ConstraintLayout>

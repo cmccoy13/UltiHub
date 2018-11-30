@@ -19,13 +19,13 @@
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:inputType="time"
             android:ems="10"
             android:id="@+id/startTimeInput"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
             android:layout_marginRight="415dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/maxScoreInput"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/softCapInput"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/softCapInput"
+            android:inputType="time"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -44,8 +44,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
             android:layout_marginRight="415dp"
             android:inputType="number" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tosPerHalfInput" android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/startGameButton"/>
+            app:layout_constraintTop_toBottomOf="@+id/tosPerHalfInput"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/radioGroup"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -101,7 +101,18 @@
             android:layout_marginStart="412dp" app:layout_constraintEnd_toStartOf="@+id/playerNameInput"
             android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tosPerHalfText"
-            android:layout_marginBottom="50dp" app:layout_constraintBottom_toTopOf="@+id/startGameButton"/>
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/startingSideText"/>
+    <TextView
+            android:text="@string/starting_on"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:textAlignment="gravity"
+            android:id="@+id/startingSideText" android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="412dp"
+            android:layout_marginStart="412dp"
+            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/startGameButton"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tosFloater"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -166,8 +177,16 @@
             android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/startTimeText"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/hardCapText"/>
+    <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="434dp"
+            android:layout_height="250dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/softCapText"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="106dp"
+            app:layout_constraintEnd_toStartOf="@+id/hardCapText" android:layout_marginEnd="1dp"/>
     <Button
-            android:text="Start Game"
+            android:text="@string/start_game"
             android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:id="@+id/startGameButton" app:layout_constraintStart_toStartOf="parent"
@@ -176,4 +195,22 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="585dp"
             android:layout_marginRight="585dp" app:layout_constraintHorizontal_bias="0.454"
     />
+    <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tosFloaterInput" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/startGameButton"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
+            android:layout_marginRight="415dp" android:checkedButton="@+id/offenseButton">
+        <RadioButton
+                android:text="@string/offense"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" android:id="@+id/offenseButton" android:layout_weight="1"/>
+        <RadioButton
+                android:text="@string/defense"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" android:id="@+id/defenseButton" android:layout_weight="1"/>
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>

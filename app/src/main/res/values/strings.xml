@@ -31,6 +31,10 @@
     <string name="timeouts_floater">Timeouts (Floater)</string>
     <string name="games">Games</string>
     <string name="new_game">Add New Game</string>
+    <string name="start_game">Start Game</string>
+    <string name="starting_on">Starting on</string>
+    <string name="defense">Defense</string>
+    <string name="offense">Offense</string>
     <string name="welcome_text">Welcome to UltiHub!\n\nTo create a team, click on the
     "create new team" button in the bottom left hand corner.\n\nTo view a team, click
     on the team\'s name from the list on the left.  From there you will be able to
