@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="633dp"
+            android:layout_height="537dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="3dp"
+            android:id="@+id/gameListRecycler"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="700dp"
+            android:layout_marginRight="700dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.521"/>
+    <TextView
+            android:text="@string/games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gamesText" android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="275dp"
+            android:layout_marginStart="275dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="910dp" android:layout_marginRight="910dp" android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/gameListRecycler"/>
+    <Button
+            android:text="@string/new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newGameButton"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameListRecycler"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="260dp" android:layout_marginStart="260dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="892dp"
+            android:layout_marginRight="892dp"/>
+</android.support.constraint.ConstraintLayout>
