@@ -29,6 +29,10 @@
                 android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
         <activity
+                android:name=".TournamentDetailActivity"
+                android:parentActivityName=".TeamDetailActivity"
+                android:screenOrientation="landscape" />
+        <activity
                 android:name=".TeamCreateActivity"
                 android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />

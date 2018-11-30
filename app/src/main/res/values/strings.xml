@@ -22,6 +22,21 @@
     <string name="email">test@test.com</string>
     <string name="password">password</string>
     <string name="confirm">Confirm</string>
+    <string name="opponent">Opponent Name</string>
+    <string name="max_score">Game to</string>
+    <string name="start_time">Game Start Time</string>
+    <string name="soft_cap">Minutes Until Soft Cap</string>
+    <string name="hard_cap">Minutes Until Hard Cap</string>
+    <string name="timeouts_per_half">Timeouts (Per Half)</string>
+    <string name="timeouts_floater">Timeouts (Floater)</string>
+    <string name="games">Games</string>
+    <string name="new_game">Add New Game</string>
+    <string name="welcome_text">Welcome to UltiHub!\n\nTo create a team, click on the
+    "create new team" button in the bottom left hand corner.\n\nTo view a team, click
+    on the team\'s name from the list on the left.  From there you will be able to
+    view and edit your team roster, keep track of tournaments your team has attended,
+    and view your team\'s statistics.</string>
+
     <string name="explanation">This will be the most interesting/complicated screen
     in the app.  On this screen, users will be able to record the game play-by-play
     as it is going on.  The app will create/collect stats based on what happens, and

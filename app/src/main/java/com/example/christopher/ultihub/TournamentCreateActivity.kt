@@ -3,6 +3,7 @@ package com.example.christopher.ultihub
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.create_tournament.*
 
 class TournamentCreateActivity : AppCompatActivity() {
@@ -33,5 +34,13 @@ class TournamentCreateActivity : AppCompatActivity() {
                 //finish()
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item!!.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return false
     }
 }

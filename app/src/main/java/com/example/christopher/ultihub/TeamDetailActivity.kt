@@ -39,7 +39,7 @@ class TeamDetailActivity : AppCompatActivity() {
         val playerRef = team.child("players")
 
         tournamentListRecycler.layoutManager = LinearLayoutManager(this)
-        tournamentListRecycler.adapter = TournamentAdapter(tournamentList, this)
+        tournamentListRecycler.adapter = TournamentAdapter(tournamentList, this, name)
         playerListRecycler.layoutManager = LinearLayoutManager(this)
         playerListRecycler.adapter = PlayerAdapter(playerList, this, name)
 
@@ -75,7 +75,7 @@ class TeamDetailActivity : AppCompatActivity() {
                     val tournamentList = tournaments.map(TournamentResponse::mapToTournament)
 
                     tournamentListRecycler.layoutManager = LinearLayoutManager(baseContext)
-                    tournamentListRecycler.adapter = TournamentAdapter(tournamentList, baseContext)
+                    tournamentListRecycler.adapter = TournamentAdapter(tournamentList, baseContext, name)
                 }
             }
 
@@ -109,7 +109,7 @@ class TeamDetailActivity : AppCompatActivity() {
         })
     }
 
-    class TournamentAdapter(val items : List<Tournament>, val context: Context) : RecyclerView.Adapter<TournamentAdapter.ViewHolder>() {
+    class TournamentAdapter(val items : List<Tournament>, val context : Context, val teamName : String) : RecyclerView.Adapter<TournamentAdapter.ViewHolder>() {
 
         private val onClickListener : View.OnClickListener
 
@@ -117,8 +117,9 @@ class TeamDetailActivity : AppCompatActivity() {
             onClickListener = View.OnClickListener { v ->
                 val item = v.tag as Tournament
 
-                val intent = Intent(v.context, GameCreateActivity::class.java).apply {
-                    putExtra("Name", item.name)
+                val intent = Intent(v.context, TournamentDetailActivity::class.java).apply {
+                    putExtra("teamName", teamName)
+                    putExtra("tournamentName", item.name)
                 }
                 v.context.startActivity(intent)
             }

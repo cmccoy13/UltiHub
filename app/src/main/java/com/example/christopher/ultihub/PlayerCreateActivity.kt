@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.widget.Button
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.create_game.*
@@ -52,5 +53,13 @@ class PlayerCreateActivity : AppCompatActivity() {
                 //finish()
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item!!.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return false
     }
 }

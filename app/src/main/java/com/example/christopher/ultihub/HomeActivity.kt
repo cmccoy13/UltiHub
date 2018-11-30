@@ -15,8 +15,6 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import com.google.firebase.database.DataSnapshot
-import java.util.*
-import kotlin.collections.HashMap
 
 
 class HomeActivity : AppCompatActivity() {
