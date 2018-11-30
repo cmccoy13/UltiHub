@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="725dp"
+                                             android:layout_height="550dp">
+
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p6Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p5Text" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p7Text" app:layout_constraintEnd_toStartOf="@+id/p6Catch"
+            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p5Text" android:textSize="30sp"
+            android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/p4Text"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p6Text" app:layout_constraintEnd_toStartOf="@+id/p5Catch"
+            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p7Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p6Text" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="2dp" app:layout_constraintEnd_toStartOf="@+id/p7Catch"
+            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p4Text" android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@+id/p3Text" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p5Text" android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/p4Catch" android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p2Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p1Text" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p3Text" app:layout_constraintEnd_toStartOf="@+id/p2Catch"
+            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p3Text" android:textSize="30sp"
+            android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/p2Text"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/p4Text" android:layout_marginBottom="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/p3Catch" android:layout_marginEnd="45dp"
+            android:layout_marginRight="45dp"/>
+    <TextView
+            android:text="@string/player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:id="@+id/p1Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="2dp" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p2Text" app:layout_constraintEnd_toStartOf="@+id/p1Catch"
+            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p6Catch" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p5Catch" android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp" app:layout_constraintStart_toEndOf="@+id/p6Text"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p7Catch"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p5Catch" android:layout_marginLeft="45dp" android:layout_marginStart="45dp"
+            app:layout_constraintStart_toEndOf="@+id/p5Text" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p6Catch" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p4Catch"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p1Catch"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="2dp" android:layout_marginLeft="45dp" android:layout_marginStart="45dp"
+            app:layout_constraintStart_toEndOf="@+id/p1Text" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p2Catch"
+    />
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p2Catch" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p1Catch" android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp" app:layout_constraintStart_toEndOf="@+id/p2Text"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p3Catch"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p4Catch" android:layout_marginLeft="45dp" android:layout_marginStart="45dp"
+            app:layout_constraintStart_toEndOf="@+id/p4Text" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p3Catch" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p5Catch"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p3Catch" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p2Catch" android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp" app:layout_constraintStart_toEndOf="@+id/p3Text"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p4Catch"/>
+    <Button
+            android:text="@string/catch_text"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p7Catch" android:layout_marginLeft="45dp" android:layout_marginStart="45dp"
+            app:layout_constraintStart_toEndOf="@+id/p7Text" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p6Catch" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="2dp"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p2Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p1Drop" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p2Catch"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p3Drop"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p4Drop" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p4Catch" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p5Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p3Drop"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p3Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p2Drop" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p3Catch"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p4Drop"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p7Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p6Drop" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p7Catch"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="2dp"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p6Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p5Drop" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p6Catch"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p7Drop"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p5Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p4Drop" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p5Catch"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p6Drop"/>
+    <Button
+            android:text="@string/drop"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p1Drop" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p1Catch" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="2dp" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p2Drop"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p1Goal" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="2dp" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p1Drop" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p2Goal"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p2Goal" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p2Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p1Goal" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p3Goal"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p4Goal" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p4Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p3Goal" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p5Goal"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p3Goal" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p3Drop" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p2Goal" android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/p4Goal"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p7Goal" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p6DGoal" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p7Drop"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="2dp"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p6DGoal" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p5Goal" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p6Drop"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p7Goal"/>
+    <Button
+            android:text="@string/goal"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:id="@+id/p5Goal" android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/p4Goal" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p5Drop"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p6DGoal"/>
+
+    <Button
+            android:text="@string/opp_callahan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/opponentCallahanButton" android:layout_marginLeft="24dp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@+id/p7Goal"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="2dp" android:layout_marginRight="2dp"/>
+    <Button
+            android:text="@string/throwaway"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/throwawayButton" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/oppGoalButton" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p4Goal"
+            android:layout_marginBottom="32dp" app:layout_constraintBottom_toTopOf="@+id/opponentCallahanButton"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="2dp" android:layout_marginRight="2dp"/>
+    <Button
+            android:text="@string/stalled"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/oppGoalButton"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p1Goal"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="2dp" android:layout_marginRight="2dp"/>
+</android.support.constraint.ConstraintLayout>

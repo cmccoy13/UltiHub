@@ -13,29 +13,20 @@
     <fragment
             android:id="@+id/game_fragment"
             class="com.example.christopher.ultihub.LiveGameFragment"
-            android:layout_width="473dp"
+            android:layout_width="757dp"
             android:layout_height="570dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="29dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gameplayRecycler" android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp" tools:layout="@layout/fragment_live_game"
-            app:layout_constraintVertical_bias="0.75"/>
+            tools:layout="@layout/fragment_offense"
+            app:layout_constraintVertical_bias="1.0"/>
     <android.support.v7.widget.RecyclerView
-            android:layout_width="306dp"
-            android:layout_height="568dp"
-            android:id="@+id/rosterRecycler" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toEndOf="@+id/gameplayRecycler" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="496dp"
+            android:layout_height="398dp"
+            android:id="@+id/rosterRecycler"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="57dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.578"/>
-    <android.support.v7.widget.RecyclerView
-            android:layout_width="416dp"
-            android:layout_height="568dp"
-            android:id="@+id/gameplayRecycler" android:layout_marginLeft="18dp" android:layout_marginStart="18dp"
-            app:layout_constraintStart_toEndOf="@+id/game_fragment" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="57dp" app:layout_constraintEnd_toStartOf="@+id/rosterRecycler"
-            android:layout_marginEnd="44dp" android:layout_marginRight="44dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.578"/>
+            android:layout_marginTop="92dp"
+            app:layout_constraintTop_toTopOf="parent"/>
     <TextView
             android:text="ourName"
             android:gravity="center"
@@ -61,7 +52,6 @@
             android:layout_height="85dp"
             android:id="@+id/gameClockText" android:textSize="36sp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/ourScoreText"
-            android:layout_marginBottom="6dp" app:layout_constraintBottom_toTopOf="@+id/gameplayRecycler"
             app:layout_constraintEnd_toStartOf="@+id/opponentScoreText" android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"/>
     <TextView
@@ -81,7 +71,6 @@
             android:layout_height="61dp"
             android:id="@+id/opponentScoreText"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/gameClockText"
-            android:layout_marginBottom="18dp" app:layout_constraintBottom_toTopOf="@+id/gameplayRecycler"
             app:layout_constraintEnd_toStartOf="@+id/opponentTimeoutsText" android:textSize="36sp"/>
     <TextView
             android:text="ourTimeouts"

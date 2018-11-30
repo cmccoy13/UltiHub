@@ -12,30 +12,19 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
             android:layout_marginRight="415dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/opponentNameInput" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/startTimeInput"
+            app:layout_constraintTop_toBottomOf="@+id/opponentNameInput"
             app:layout_constraintStart_toEndOf="@+id/maxScoreText" android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"/>
-    <EditText
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:id="@+id/startTimeInput"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
-            android:layout_marginRight="415dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/maxScoreInput"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/softCapInput"
-            android:inputType="time"/>
+            android:layout_marginLeft="24dp" app:layout_constraintHorizontal_bias="1.0"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/softCapInput"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
-            android:layout_marginRight="415dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/startTimeInput"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/hardCapInput"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="412dp"
+            android:layout_marginRight="412dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/hardCapInput"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/maxScoreInput"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -54,8 +43,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
             android:layout_marginRight="415dp"
             android:inputType="number" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/hardCapInput" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/tosFloaterInput"/>
+            app:layout_constraintTop_toBottomOf="@+id/hardCapInput"
+    />
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -111,8 +100,8 @@
             android:id="@+id/startingSideText" android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="412dp"
             android:layout_marginStart="412dp"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/startGameButton"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tosFloater"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tosFloater"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/gameDateButton"/>
     <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -121,7 +110,7 @@
             android:id="@+id/opponentNameInput"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
             android:layout_marginRight="415dp"
-            android:layout_marginTop="75dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="68dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/playerNumInput"
             app:layout_constraintStart_toEndOf="@+id/opponentText" android:layout_marginLeft="24dp"
@@ -140,7 +129,7 @@
             app:layout_constraintBottom_toTopOf="@+id/maxScoreText"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintVertical_chainStyle="packed" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="75dp"/>
+            android:layout_marginTop="60dp"/>
     <TextView
             android:text="@string/max_score"
             android:layout_width="200dp"
@@ -152,19 +141,7 @@
             android:layout_marginStart="416dp" app:layout_constraintEnd_toStartOf="@+id/playerNameInput"
             android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/opponentText"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/startTimeText"/>
-    <TextView
-            android:text="@string/start_time"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:gravity="right"
-            android:textAlignment="gravity"
-            android:id="@+id/startTimeText" android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="416dp"
-            android:layout_marginStart="416dp" app:layout_constraintEnd_toStartOf="@+id/playerNameInput"
-            android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/maxScoreText"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/softCapText"/>
+    />
     <TextView
             android:text="@string/soft_cap"
             android:layout_width="249dp"
@@ -175,35 +152,77 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="364dp"
             android:layout_marginStart="364dp" app:layout_constraintEnd_toStartOf="@+id/playerNameInput"
             android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/startTimeText"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/hardCapText"/>
-    <TimePicker
-            android:id="@+id/timePicker1"
-            android:layout_width="434dp"
-            android:layout_height="250dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/softCapText"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="106dp"
-            app:layout_constraintEnd_toStartOf="@+id/hardCapText" android:layout_marginEnd="1dp"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/maxScoreText"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/hardCapText"
+            app:layout_constraintVertical_chainStyle="spread"/>
     <Button
             android:text="@string/start_game"
             android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:id="@+id/startGameButton" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="584dp" android:layout_marginStart="584dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="75dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="56dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="585dp"
             android:layout_marginRight="585dp" app:layout_constraintHorizontal_bias="0.454"
     />
+    <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:id="@+id/selectedDate"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/selectedTime" android:layout_marginEnd="415dp"
+            android:layout_marginRight="415dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/game_date"
+            android:id="@+id/gameDateButton"
+            android:layout_alignBottom="@+id/selectedDate"
+            android:layout_toRightOf="@+id/selectedDate"
+            android:layout_toEndOf="@+id/selectedDate"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/startingSideText" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/gameTimeButton" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="459dp" android:layout_marginStart="459dp"/>
+
+    <EditText
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:id="@+id/selectedTime"
+            android:layout_below="@+id/selectedDate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="19dp"
+            app:layout_constraintBottom_toTopOf="@+id/startGameButton" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/selectedDate" android:layout_marginEnd="415dp"
+            android:layout_marginRight="415dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/game_time"
+            android:id="@+id/gameTimeButton"
+            android:layout_below="@+id/gameDateButton"
+            android:layout_alignLeft="@+id/gameDateButton"
+            android:layout_alignStart="@+id/gameDateButton"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameDateButton" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="456dp" android:layout_marginStart="456dp" android:layout_marginBottom="19dp"
+            app:layout_constraintBottom_toTopOf="@+id/startGameButton"/>
     <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/radioGroup" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tosFloaterInput" android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/startGameButton"
+            app:layout_constraintTop_toBottomOf="@+id/tosFloaterInput"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="415dp"
-            android:layout_marginRight="415dp" android:checkedButton="@+id/offenseButton">
+            android:layout_marginRight="415dp" android:checkedButton="@+id/offenseButton"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/selectedDate">
         <RadioButton
                 android:text="@string/offense"
                 android:layout_width="100dp"

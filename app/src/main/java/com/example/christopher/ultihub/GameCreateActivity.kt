@@ -1,5 +1,7 @@
 package com.example.christopher.ultihub
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.NavUtils
@@ -11,6 +13,10 @@ import kotlinx.android.synthetic.main.create_team.*
 import kotlinx.android.synthetic.main.create_tournament.*
 import kotlinx.android.synthetic.main.team_detail.*
 import android.widget.TimePicker
+import java.text.SimpleDateFormat
+import java.time.Month
+import java.util.*
+import javax.xml.datatype.DatatypeConstants.MONTHS
 
 class GameCreateActivity : AppCompatActivity() {
 
@@ -22,6 +28,34 @@ class GameCreateActivity : AppCompatActivity() {
         val teamName = intent.getStringExtra("teamName")
         val tournamentName = intent.getStringExtra("tournamentName")
 
+        gameDateButton.setOnClickListener{
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                // Display Selected date in textbox
+                val updatedMonth = (monthOfYear.toInt()+1).toString()
+                selectedDate.setText("" + updatedMonth + "-" + dayOfMonth + "-" + year)
+            }, year, month, day)
+            dpd.show()
+        }
+
+        gameTimeButton.setOnClickListener{
+            val c = Calendar.getInstance()
+            val hour = c.get(Calendar.HOUR_OF_DAY)
+            val minute = c.get(Calendar.MINUTE)
+
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                c.set(Calendar.HOUR_OF_DAY, hour)
+                c.set(Calendar.MINUTE, minute)
+                c.set(Calendar.SECOND, 0)
+                selectedTime.setText(SimpleDateFormat("HH:mm:ss").format(c.time))
+            }
+            TimePickerDialog(this, timeSetListener, c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE), true).show()
+        }
+
         startGameButton.setOnClickListener{
             val opponent = opponentNameInput.text.toString()
             val maxScore = maxScoreInput.text.toString()
@@ -29,11 +63,13 @@ class GameCreateActivity : AppCompatActivity() {
             val hardCap = hardCapInput.text.toString()
             val tosPerHalf = tosPerHalfInput.text.toString()
             val tosFloater = tosFloaterInput.text.toString()
-            val startHour = timePicker1.hour
-            val startMinute = timePicker1.minute
+            val startDate = selectedDate.text.toString()
+            val startTime = selectedTime.text.toString()
 
-            if(opponent != "" && maxScore != "" && startHour != null && startMinute != null
+            if(opponent != "" && maxScore != "" && startDate != "" && startTime != ""
                 && softCap != "" && hardCap != "" && tosPerHalf != "" && tosFloater != "") {
+
+                val date = "" + selectedDate.text.toString() + " " + selectedTime.text.toString()
 
                 val database = Utils.database
                 val team = database.getReference("users").child(Utils.userID).child("teams").child(teamName)
@@ -43,14 +79,26 @@ class GameCreateActivity : AppCompatActivity() {
                 thisGame.child("title").setValue("vs. $opponent")
                 thisGame.child("opponent").setValue(opponent)
                 thisGame.child("maxScore").setValue(maxScore)
+                thisGame.child("ourScore").setValue(0)
+                thisGame.child("oppScore").setValue(0)
+                thisGame.child("ourTOsFirstHalf").setValue(tosPerHalf)
+                thisGame.child("ourTOsSecondHalf").setValue(tosPerHalf)
+                thisGame.child("ourTOsFloater").setValue(tosFloater)
+                thisGame.child("oppTOsFirstHalf").setValue(tosPerHalf)
+                thisGame.child("oppTOsSecondHalf").setValue(tosPerHalf)
+                thisGame.child("oppTOsFloater").setValue(tosFloater)
+                thisGame.child("startDate").setValue(date)
+                thisGame.child("onOffense").setValue(offenseButton.isSelected)
+                thisGame.child("gameFinished").setValue(false)
 
                 val intent = Intent(this, LiveGameActivity::class.java).apply {
                     putExtra("teamName", teamName)
                     putExtra("tournamentName", tournamentName)
+                    putExtra("gameName", "vs. $opponent")
+
                     putExtra("opponent", opponent)
                     putExtra("maxScore", maxScore)
-                    putExtra("startHour", startHour.toString())
-                    putExtra("startMinute", startMinute.toString())
+                    putExtra("startDT", date)
                     putExtra("softCap", softCap)
                     putExtra("hardCap", hardCap)
                     putExtra("tosPerHalf", tosPerHalf)

@@ -29,12 +29,25 @@
     <string name="hard_cap">Minutes Until Hard Cap</string>
     <string name="timeouts_per_half">Timeouts (Per Half)</string>
     <string name="timeouts_floater">Timeouts (Floater)</string>
+    <string name="game_date">Select Game Date</string>
+    <string name="game_time">Select Start Time</string>
     <string name="games">Games</string>
     <string name="new_game">Add New Game</string>
     <string name="start_game">Start Game</string>
     <string name="starting_on">Starting on</string>
     <string name="defense">Defense</string>
     <string name="offense">Offense</string>
+    <string name="catch_text">Catch</string>
+    <string name="drop">Drop</string>
+    <string name="goal">Goal</string>
+    <string name="throwaway">Throwaway</string>
+    <string name="stalled">Stalled</string>
+    <string name="D">D</string>
+    <string name="stall">Stall</string>
+    <string name="callahan">Callahan</string>
+    <string name="opp_goal">Opponent Goal</string>
+    <string name="opp_throwaway">Opponent Throwaway</string>
+    <string name="opp_callahan">Opponent Callahan</string>
     <string name="welcome_text">Welcome to UltiHub!\n\nTo create a team, click on the
     "create new team" button in the bottom left hand corner.\n\nTo view a team, click
     on the team\'s name from the list on the left.  From there you will be able to
