@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.tournament_detail.*
 
 class TournamentDetailActivity : AppCompatActivity() {
 
-    lateinit var gameList : MutableList<String>
+    lateinit var gameList : MutableList<Game>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class TournamentDetailActivity : AppCompatActivity() {
         val gamesRef = tournament.child("games")
 
         gameListRecycler.layoutManager = LinearLayoutManager(this)
-        gameListRecycler.adapter = GameAdapter(gameList, this)
+        gameListRecycler.adapter = GameAdapter(gameList, this, teamName, tournamentName)
 
         newGameButton.setOnClickListener {
             val intent = Intent(this, GameCreateActivity::class.java).apply{
@@ -53,11 +53,13 @@ class TournamentDetailActivity : AppCompatActivity() {
                 dataSnapshot.run{
 
                     val games = children.mapNotNull {
-                        it.child("title").getValue().toString()
+                        it.getValue(GameResponse::class.java)
                     }
 
+                    val gameList = games.map(GameResponse::mapToGame)
+
                     gameListRecycler.layoutManager = LinearLayoutManager(baseContext)
-                    gameListRecycler.adapter = GameAdapter(games, baseContext)
+                    gameListRecycler.adapter = GameAdapter(gameList, baseContext, teamName, tournamentName)
                 }
             }
 
@@ -68,16 +70,18 @@ class TournamentDetailActivity : AppCompatActivity() {
         })
     }
 
-    class GameAdapter(val items : List<String>, val context: Context) : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+    class GameAdapter(val items : List<Game>, val context: Context, val teamName : String, val tournamentName : String) : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
         private val onClickListener : View.OnClickListener
 
         init {
             onClickListener = View.OnClickListener { v ->
-                val item = v.tag as String
+                val item = v.tag as Game
 
                 val intent = Intent(v.context, LiveGameActivity::class.java).apply {
-                    putExtra("Name", item)
+                    putExtra("teamName", teamName)
+                    putExtra("tournamentName", tournamentName)
+                    putExtra("opponent", item.opponent)
                 }
                 v.context.startActivity(intent)
             }
@@ -93,7 +97,7 @@ class TournamentDetailActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = items[position]
-            holder.itemView.itemNameText.text = items.get(position)
+            holder.itemView.itemNameText.text = items.get(position).title
 
             with(holder.itemView) {
                 tag = item

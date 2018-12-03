@@ -6,9 +6,10 @@ import android.os.CountDownTimer
 import android.os.SystemClock
 import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.create_game.*
 import kotlinx.android.synthetic.main.create_team.*
 import kotlinx.android.synthetic.main.create_tournament.*
@@ -22,52 +23,72 @@ import kotlin.math.floor
 
 class LiveGameActivity : AppCompatActivity() {
 
+    lateinit var teamName : String
+    lateinit var tournamentName : String
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.live_game)
 
-        val teamName = intent.getStringExtra("teamName")
-        val tournamentName = intent.getStringExtra("tournamentName")
-        val gameName = intent.getStringExtra("gameName")
+        teamName = intent.getStringExtra("teamName")
+        tournamentName = intent.getStringExtra("tournamentName")
+        val opponent = intent.getStringExtra("opponent")
 
         val database = Utils.database
         val team = database.getReference("users").child(Utils.userID).child("teams").child(teamName)
         val tournament = team.child("tournaments").child(tournamentName)
-        val game = tournament.child("games").child(gameName)
-        
+        val gameRef = tournament.child("games").child(opponent)
 
-        //TODO: REMOVE THESE AND GET FROM DB INSTEAD!!
+        gameRef.child("title").setValue("vs. $opponent")
 
-        val opponent = intent.getStringExtra("opponent")
-        val maxScore = intent.getStringExtra("maxScore")
-        val startDT = intent.getStringExtra("startDT")
-        val softCap = intent.getStringExtra("softCap")
-        val hardCap = intent.getStringExtra("hardCap")
-        val tosPerHalf = intent.getStringExtra("tosPerHalf")
-        val tosFloater = intent.getStringExtra("tosFloater")
-        val offense = intent.getBooleanExtra("offense", true)
+        val maxScore : Int
+        val startDT : String
+        val softCap : Int
+        val hardCap : Int
+        var ourTOsFirstHalf : Int
+        var ourTOsFSecondHalf : Int
+        var ourTOsFloater : Int
+        var oppTOsFirstHalf : Int
+        var oppTOsFSecondHalf : Int
+        var oppTOsFloater : Int
+        var onOffense : Boolean
+        var ourScore : Int
+        var oppScore : Int
 
-        var ourScoreCurrent = 0
-        var opponentScoreCurrent = 0
-        val halftime = maxScore.toInt()/2
 
-        val simpleTimeFormat = SimpleDateFormat("HH:mm:ss")
+        gameRef.addValueEventListener(object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val game = dataSnapshot.getValue(GameResponse::class.java)
+                begin(game!!)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(HomeActivity.TAG, "Failed to read value.", error.toException())
+            }
+        })
+    }
+
+    fun begin(game : GameResponse) {
+        //val halftime = maxScore/2
+
         val currentMS = Calendar.getInstance().timeInMillis
-        val startTime = SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(startDT)
+        val startTime = SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(game.startDate)
         val startMS = startTime.time
 
         val timeUntilStart = startMS-currentMS
 
-        object : CountDownTimer((timeUntilStart + hardCap.toInt()*60*1000), 1000) {
+        object : CountDownTimer((timeUntilStart + game.hardCap*60*1000), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 val minutesUntilFinished = ((millisUntilFinished / 1000)/60)
                 val secondsUntilFinished = (millisUntilFinished / 1000)%60
 
-                if(millisUntilFinished >= hardCap.toInt()*1000*60) { //if game has not yet started
-                    val minutesUntilStart = ((millisUntilFinished - hardCap.toInt()*1000*60)/1000)/60
-                    val secondsUntilStart = ((millisUntilFinished - hardCap.toInt()*1000%60)/1000)%60
+                if(millisUntilFinished >= game.hardCap*1000*60) { //if game has not yet started
+                    val minutesUntilStart = ((millisUntilFinished - game.hardCap*1000*60)/1000)/60
+                    val secondsUntilStart = ((millisUntilFinished - game.hardCap*1000%60)/1000)%60
 
                     if(minutesUntilStart.toInt() == 0 && secondsUntilStart.toInt() == 0){
                         gameClockText.setText("Game Start")
@@ -94,7 +115,7 @@ class LiveGameActivity : AppCompatActivity() {
         }.start()
 
         ourTeamText.text = teamName
-        opponentTeamText.text = opponent
+        opponentTeamText.text = game.opponent
     }
 
     /*override fun onOptionsItemSelected(item: MenuItem?): Boolean {
