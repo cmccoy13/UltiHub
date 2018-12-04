@@ -230,6 +230,7 @@
         <RadioButton
                 android:text="@string/defense"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" android:id="@+id/defenseButton" android:layout_weight="1"/>
+                android:layout_height="wrap_content" android:id="@+id/defenseButton" android:layout_weight="1"
+                android:checked="false"/>
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>

@@ -90,7 +90,7 @@ class GameCreateActivity : AppCompatActivity() {
                 thisGame.child("oppTOsSecondHalf").setValue(tosPerHalf.toInt())
                 thisGame.child("oppTOsFloater").setValue(tosFloater.toInt())
                 thisGame.child("startDate").setValue(date)
-                thisGame.child("onOffense").setValue(offenseButton.isSelected)
+                thisGame.child("onOffense").setValue(offenseButton.isChecked)
                 thisGame.child("gameFinished").setValue(false)
 
                 val intent = Intent(this, LiveGameActivity::class.java).apply {
