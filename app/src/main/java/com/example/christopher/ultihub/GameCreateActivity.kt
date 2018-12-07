@@ -91,20 +91,13 @@ class GameCreateActivity : AppCompatActivity() {
                 thisGame.child("oppTOsFloater").setValue(tosFloater.toInt())
                 thisGame.child("startDate").setValue(date)
                 thisGame.child("onOffense").setValue(offenseButton.isChecked)
+                thisGame.child("startingOnOffense").setValue(offenseButton.isChecked)
                 thisGame.child("gameFinished").setValue(false)
 
                 val intent = Intent(this, LiveGameActivity::class.java).apply {
                     putExtra("teamName", teamName)
                     putExtra("tournamentName", tournamentName)
                     putExtra("opponent", opponent)
-
-                    putExtra("maxScore", maxScore)
-                    putExtra("startDT", date)
-                    putExtra("softCap", softCap)
-                    putExtra("hardCap", hardCap)
-                    putExtra("tosPerHalf", tosPerHalf)
-                    putExtra("tosFloater", tosFloater)
-                    putExtra("offense", offenseButton.isSelected)
                 }
 
                 startActivity(intent)

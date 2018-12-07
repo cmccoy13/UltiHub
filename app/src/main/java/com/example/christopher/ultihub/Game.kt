@@ -14,6 +14,7 @@ data class GameResponse(
     val oppTOsSecondHalf : Int = 1,
     val oppTOsFloater : Int = 1,
     val onOffense : Boolean = true,
+    val startingOnOffense : Boolean = true,
     val ourScore : Int = 0,
     val oppScore : Int = 0,
     val gameFinished : Boolean = false
@@ -21,7 +22,7 @@ data class GameResponse(
 
 fun GameResponse.mapToGame() = Game(title, opponent, startDate, maxScore, softCap, hardCap,
     ourTOsFirstHalf, ourTOsSecondHalf, ourTOsFloater, oppTOsFirstHalf, oppTOsSecondHalf, oppTOsFloater,
-    onOffense, ourScore, oppScore, gameFinished)
+    onOffense, startingOnOffense, ourScore, oppScore, gameFinished)
 
 data class Game(
     val title : String,
@@ -37,6 +38,7 @@ data class Game(
     val oppTOsSecondHalf : Int,
     val oppTOsFloater : Int,
     val onOffense : Boolean,
+    val startingOnOffense: Boolean,
     val ourScore : Int,
     val oppScore : Int,
     val gameFinished: Boolean

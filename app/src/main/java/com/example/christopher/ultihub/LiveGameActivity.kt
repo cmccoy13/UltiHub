@@ -1,53 +1,51 @@
 package com.example.christopher.ultihub
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.SystemClock
 import android.support.v4.app.Fragment
-import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.create_game.*
-import kotlinx.android.synthetic.main.create_team.*
-import kotlinx.android.synthetic.main.create_tournament.*
-import kotlinx.android.synthetic.main.fragment_defense.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import kotlinx.android.synthetic.main.live_game.*
-import kotlinx.android.synthetic.main.team_detail.*
-import java.sql.Time
 import java.text.SimpleDateFormat
-import java.time.LocalTime
 import java.util.*
-import kotlin.math.floor
 
-class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
+class LiveGameActivity : AppCompatActivity(), DataPasser {
 
     lateinit var teamName : String
     lateinit var tournamentName : String
-    lateinit var rosterList : MutableList<Player>
-    lateinit var currentFrag : Fragment
-    lateinit var currentLineup : ArrayList<Player>
+    lateinit var rosterList : List<Player>
+    lateinit var currentLineup : ArrayList<String>
     lateinit var playerRef : DatabaseReference
+    lateinit var gameRef : DatabaseReference
+    var ourScore = 0
+    var oppScore = 0
+    var ourTOsFirstHalf = 0
+    var ourTOsSecondHalf = 0
+    var ourTOsFloater = 0
+    var oppTOsFirstHalf = 0
+    var oppTOsSecondHalf = 0
+    var oppTOsFloater = 0
+    var maxScore = 0
+    var halftime = 0
+    var softCapIsOn = false
+    var hardCapIsOn = false
     var onOffense = false
+    var secondHalf = false
+    var startingOnOffense = false
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.live_game)
-
-        rosterList = mutableListOf()
 
         teamName = intent.getStringExtra("teamName")
         tournamentName = intent.getStringExtra("tournamentName")
@@ -57,36 +55,15 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
         val team = database.getReference("users").child(Utils.userID).child("teams").child(teamName)
         playerRef = team.child("players")
         val tournament = team.child("tournaments").child(tournamentName)
-        val gameRef = tournament.child("games").child(opponent)
+        gameRef = tournament.child("games").child(opponent)
 
         gameRef.child("title").setValue("vs. $opponent")
 
-        val maxScore : Int
-        val startDT : String
-        val softCap : Int
-        val hardCap : Int
-        var ourTOsFirstHalf : Int
-        var ourTOsFSecondHalf : Int
-        var ourTOsFloater : Int
-        var oppTOsFirstHalf : Int
-        var oppTOsFSecondHalf : Int
-        var oppTOsFloater : Int
-        var onOffense : Boolean
-        var ourScore : Int
-        var oppScore : Int
-
-        /*rosterRecycler.layoutManager = LinearLayoutManager(this)
-        rosterRecycler.adapter = RosterAdapter(rosterList, this, teamName, this)*/
         val act = this
-
         val frag = LiveGameFragment()
 
-        // Add the fragment to the 'fragment_container' FrameLayout
         supportFragmentManager.beginTransaction()
             .add(R.id.gameLayout, frag).commit()
-
-        currentFrag = frag
-
 
         playerRef.addValueEventListener(object : ValueEventListener {
 
@@ -98,7 +75,7 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
                         it.getValue(PlayerResponse::class.java)
                     }
 
-                    val rosterList = players.map(PlayerResponse::mapToPlayer)
+                    rosterList = players.map(PlayerResponse::mapToPlayer)
 
                     rosterRecycler.layoutManager = LinearLayoutManager(act)
                     rosterRecycler.adapter = RosterAdapter(rosterList, baseContext, teamName, act)
@@ -115,7 +92,6 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val game = dataSnapshot.getValue(GameResponse::class.java)
-                act.onOffense = game!!.onOffense
                 begin(game!!)
             }
 
@@ -126,50 +102,121 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
         })
     }
 
-    override fun onClick(players : ArrayList<Player>) {
+    override fun beginPoint(players : ArrayList<String>) {
         currentLineup = players
+
         if(onOffense) {
             val frag = OffenseFragment.newInstance(players)
 
-            /*val bundle = Bundle()
-            bundle.putParcelableArrayList("players", currentLineup)
-
-            frag.arguments = bundle
-*/
-            // Add the fragment to the 'fragment_container' FrameLayout
             supportFragmentManager.beginTransaction()
                 .replace(R.id.gameLayout, frag).commit()
-
-            currentFrag = frag
         }
         else {
-            val frag = DefenseFragment()
+            val frag = DefenseFragment.newInstance(players)
 
-            val bundle = Bundle()
-            bundle.putParcelableArrayList("players", currentLineup)
-
-            frag.arguments = bundle
-
-            // Add the fragment to the 'fragment_container' FrameLayout
             supportFragmentManager.beginTransaction()
                 .replace(R.id.gameLayout, frag).commit()
-
-            currentFrag = frag
         }
-
-        //currentFrag.updatePlayers(currentLineup)
     }
 
     override fun switchPossession(players : ArrayList<String>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if(onOffense) {
+            val frag = DefenseFragment.newInstance(players)
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.gameLayout, frag).commit()
+        }
+        else {
+            val frag = OffenseFragment.newInstance(players)
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.gameLayout, frag).commit()
+        }
+
+        onOffense = !onOffense
+
+        val posRef = gameRef.child("onOffense")
+        posRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                posRef.setValue(onOffense)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
     }
 
     override fun newLineDefense() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        onOffense = false
+        ourScore++
+        ourScoreText.text = ourScore.toString()
+
+        val scoreRef = gameRef.child("ourScore")
+        scoreRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val data = dataSnapshot.value
+                var newVal = data.toString().toInt()
+                newVal++
+                scoreRef.setValue(newVal)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+
+        val posRef = gameRef.child("onOffense")
+        posRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                posRef.setValue(onOffense)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+
+        val frag = LiveGameFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.gameLayout, frag).commit()
+
+        rosterRecycler.layoutManager = LinearLayoutManager(this)
+        rosterRecycler.adapter = RosterAdapter(rosterList, this, teamName, this)
     }
 
     override fun newLineOffense() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        onOffense = true
+        oppScore++
+        opponentScoreText.text = oppScore.toString()
+
+        val statRef = gameRef.child("oppScore")
+
+        statRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val data = dataSnapshot.value
+                var newVal = data.toString().toInt()
+                newVal++
+                statRef.setValue(newVal)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+
+        val posRef = gameRef.child("onOffense")
+        posRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                posRef.setValue(onOffense)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+        })
+
+        val frag = LiveGameFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.gameLayout, frag).commit()
+
+        rosterRecycler.layoutManager = LinearLayoutManager(this)
+        rosterRecycler.adapter = RosterAdapter(rosterList, this, teamName, this)
     }
 
     override fun passData(player : String, action: String) {
@@ -199,48 +246,46 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
     }
 
     fun begin(game : GameResponse) {
-        //val halftime = maxScore/2
+        maxScore = game.maxScore
+        ourScore = game.ourScore
+        oppScore = game.oppScore
+        startingOnOffense = game.startingOnOffense
+        onOffense = game.onOffense
+        ourTOsFirstHalf = game.ourTOsFirstHalf
+        ourTOsSecondHalf = game.ourTOsSecondHalf
+        ourTOsFloater = game.ourTOsFloater
+        oppTOsFirstHalf = game.oppTOsFirstHalf
+        oppTOsSecondHalf = game.oppTOsSecondHalf
+        oppTOsFloater = game.oppTOsFloater
+        halftime = maxScore/2
 
-        startClock(game.startDate, game.hardCap)
-
-        /*if(game.onOffense) {
-            val frag = OffenseFragment()
-
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            frag.arguments = intent.extras
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            supportFragmentManager.beginTransaction()
-                .add(R.id.gameLayout, frag).commit()
-
-            currentFrag = frag
+        if(ourScore >= halftime || oppScore >= halftime) {
+            secondHalf = true
         }
-        else {
-            val frag = DefenseFragment()
 
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            frag.arguments = intent.extras
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            supportFragmentManager.beginTransaction()
-                .add(R.id.gameLayout, frag).commit()
-
-            currentFrag = frag
-        }*/
+        startClock(game.startDate, game.softCap, game.hardCap)
 
         ourTeamText.text = teamName
         opponentTeamText.text = game.opponent
+        ourScoreText.text = ourScore.toString()
+        opponentScoreText.text = oppScore.toString()
+
+        if(!secondHalf) {
+            ourTimeoutsText.text = (ourTOsFirstHalf + ourTOsFloater).toString()
+            opponentTimeoutsText.text = (oppTOsFirstHalf + oppTOsFloater).toString()
+        }
+        else {
+            ourTimeoutsText.text = (ourTOsSecondHalf + ourTOsFloater).toString()
+            opponentTimeoutsText.text = (oppTOsSecondHalf + oppTOsFloater).toString()
+        }
     }
 
-    fun startClock(startDT : String, hardCap : Int) {
+    fun startClock(startDT : String, softCap: Int, hardCap : Int) {
         val currentMS = Calendar.getInstance().timeInMillis
         val startTime = SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(startDT)
         val startMS = startTime.time
@@ -278,13 +323,15 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
 
             override fun onFinish() {
                 gameClockText.setText("Hard Cap Reached")
+                hardCapIsOn = true
             }
         }.start()
     }
 
-    class RosterAdapter(val items : List<Player>, val context: Context, val teamName : String, listener : OnItemClick) : RecyclerView.Adapter<RosterAdapter.ViewHolder>() {
+    class RosterAdapter(val items : List<Player>, val context: Context, val teamName : String, listener : DataPasser) : RecyclerView.Adapter<RosterAdapter.ViewHolder>() {
 
-        var selectedPlayers : ArrayList<Player> = arrayListOf()
+        var selectedPlayers : ArrayList<Player> = ArrayList(7)
+        var playerNames : ArrayList<String> = ArrayList(7)
         var numSelected = 0
         private val onClickListener : View.OnClickListener
 
@@ -295,17 +342,27 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
                 if(selectedPlayers.contains(item)) {
                     v.setBackgroundColor(Color.WHITE)
                     selectedPlayers.remove(item)
+                    playerNames.remove(item.name)
                     numSelected--
                 }
                 else {
                     v.setBackgroundColor(Color.LTGRAY)
                     numSelected++
                     selectedPlayers.add(item)
+                    playerNames.add(item.name)
 
                     if(numSelected == 7){
-                        listener.onClick(selectedPlayers)
+                        listener.beginPoint(playerNames)
+
+                        /*for(i in 0..6) {
+                            val index = items.indexOf(selectedPlayers[i])
+                            selectedPlayers[i]
+                            this.
+                        }*/
+
                         numSelected = 0
                         selectedPlayers.clear()
+                        playerNames.clear()
                     }
                 }
             }
@@ -332,6 +389,10 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
 
         inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
             val tvPlayerName = view.itemNameText
+        }
+
+        fun clearSelections() {
+
         }
     }
 

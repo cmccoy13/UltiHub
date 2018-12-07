@@ -15,17 +15,17 @@ class DefenseFragment : Fragment() {
     lateinit var players : ArrayList<String>
 
     companion object {
-        fun newInstance(playerList: ArrayList<Player>): DefenseFragment {
+        fun newInstance(playerList: ArrayList<String>): DefenseFragment {
 
             val args = Bundle()
             val nameList = ArrayList<String>()
-            nameList.add(playerList[0].name)
-            nameList.add(playerList[1].name)
-            nameList.add(playerList[2].name)
-            nameList.add(playerList[3].name)
-            nameList.add(playerList[4].name)
-            nameList.add(playerList[5].name)
-            nameList.add(playerList[6].name)
+            nameList.add(playerList[0])
+            nameList.add(playerList[1])
+            nameList.add(playerList[2])
+            nameList.add(playerList[3])
+            nameList.add(playerList[4])
+            nameList.add(playerList[5])
+            nameList.add(playerList[6])
             args.putStringArrayList("nameList", nameList)
             val fragment = DefenseFragment()
             fragment.arguments = args
