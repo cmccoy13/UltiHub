@@ -223,14 +223,14 @@
             android:layout_width="100dp"
             android:layout_height="55dp"
             android:id="@+id/p7callahan" android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/p6Dcallahan" android:layout_marginLeft="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/p6callahan" android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p7stall"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="2dp"/>
     <Button
             android:text="@string/callahan"
             android:layout_width="100dp"
             android:layout_height="55dp"
-            android:id="@+id/p6Dcallahan" android:layout_marginTop="15dp"
+            android:id="@+id/p6callahan" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/p5callahan" android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p6stall"
             android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p7callahan"/>
@@ -241,7 +241,7 @@
             android:id="@+id/p5callahan" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/p4callahan" android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp" app:layout_constraintStart_toEndOf="@+id/p5stall"
-            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p6Dcallahan"/>
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/p6callahan"/>
 
     <Button
             android:text="@string/opp_throwaway"

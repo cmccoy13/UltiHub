@@ -57,6 +57,8 @@ class PlayerCreateActivity : AppCompatActivity() {
                 player.child("catches").setValue(0)
                 player.child("Ds").setValue(0)
                 player.child("callahans").setValue(0)
+                player.child("throwaways").setValue(0)
+                player.child("stalls").setValue(0)
 
                 startActivity(Intent(this, TeamDetailActivity::class.java).putExtra("Name", teamName))
                 //finish()

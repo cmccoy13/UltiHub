@@ -48,6 +48,7 @@
     <string name="opp_goal">Opponent Goal</string>
     <string name="opp_throwaway">Opponent Throwaway</string>
     <string name="opp_callahan">Opponent Callahan</string>
+    <string name="select_line">Please select 7 players to put on the line</string>
     <string name="welcome_text">Welcome to UltiHub!\n\nTo create a team, click on the
     "create new team" button in the bottom left hand corner.\n\nTo view a team, click
     on the team\'s name from the list on the left.  From there you will be able to

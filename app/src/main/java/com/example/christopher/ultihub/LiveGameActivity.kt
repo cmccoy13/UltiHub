@@ -37,9 +37,10 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
     lateinit var teamName : String
     lateinit var tournamentName : String
     lateinit var rosterList : MutableList<Player>
-    lateinit var currentFrag : GameFragment
+    lateinit var currentFrag : Fragment
     lateinit var currentLineup : ArrayList<Player>
     lateinit var playerRef : DatabaseReference
+    var onOffense = false
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -78,6 +79,15 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
         rosterRecycler.adapter = RosterAdapter(rosterList, this, teamName, this)*/
         val act = this
 
+        val frag = LiveGameFragment()
+
+        // Add the fragment to the 'fragment_container' FrameLayout
+        supportFragmentManager.beginTransaction()
+            .add(R.id.gameLayout, frag).commit()
+
+        currentFrag = frag
+
+
         playerRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -105,6 +115,7 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val game = dataSnapshot.getValue(GameResponse::class.java)
+                act.onOffense = game!!.onOffense
                 begin(game!!)
             }
 
@@ -117,7 +128,48 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
 
     override fun onClick(players : ArrayList<Player>) {
         currentLineup = players
-        currentFrag.updatePlayers(currentLineup)
+        if(onOffense) {
+            val frag = OffenseFragment.newInstance(players)
+
+            /*val bundle = Bundle()
+            bundle.putParcelableArrayList("players", currentLineup)
+
+            frag.arguments = bundle
+*/
+            // Add the fragment to the 'fragment_container' FrameLayout
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.gameLayout, frag).commit()
+
+            currentFrag = frag
+        }
+        else {
+            val frag = DefenseFragment()
+
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("players", currentLineup)
+
+            frag.arguments = bundle
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.gameLayout, frag).commit()
+
+            currentFrag = frag
+        }
+
+        //currentFrag.updatePlayers(currentLineup)
+    }
+
+    override fun switchPossession(players : ArrayList<String>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun newLineDefense() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun newLineOffense() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun passData(player : String, action: String) {
@@ -156,7 +208,8 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
         //val halftime = maxScore/2
 
         startClock(game.startDate, game.hardCap)
-        if(game.onOffense) {
+
+        /*if(game.onOffense) {
             val frag = OffenseFragment()
 
             // In case this activity was started with special instructions from an
@@ -181,7 +234,7 @@ class LiveGameActivity : AppCompatActivity(), OnItemClick, DataPasser {
                 .add(R.id.gameLayout, frag).commit()
 
             currentFrag = frag
-        }
+        }*/
 
         ourTeamText.text = teamName
         opponentTeamText.text = game.opponent
