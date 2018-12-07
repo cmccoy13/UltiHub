@@ -7,16 +7,39 @@ data class PlayerResponse(
     val name : String = "",
     val number : String? = null,
     val position : String? = null,
-    val captain : Boolean = false
+    val captain : Boolean = false,
+    val Ds : Int = 0,
+    val assists : Int = 0,
+    val callahans : Int = 0,
+    val callahansThrown : Int = 0,
+    val catches : Int = 0,
+    val drops : Int = 0,
+    val goals : Int = 0,
+    val passes : Int = 0,
+    val stalled : Int = 0,
+    val stalls : Int = 0,
+    val throwaways : Int = 0
 )
 
-fun PlayerResponse.mapToPlayer() = Player(name, number, position, captain)
+fun PlayerResponse.mapToPlayer() = Player(name, number, position, captain, Ds, assists, callahans, callahansThrown,
+                                            catches, drops, goals, passes, stalled, stalls, throwaways)
 
 data class Player(
     val name : String = "",
-    val number : String? = "",
-    val position : String? = "",
-    val captain : Boolean = false
+    val number : String? = null,
+    val position : String? = null,
+    val captain : Boolean = false,
+    val Ds : Int = 0,
+    val assists : Int = 0,
+    val callahans : Int = 0,
+    val callahansThrown : Int = 0,
+    val catches : Int = 0,
+    val drops : Int = 0,
+    val goals : Int = 0,
+    val passes : Int = 0,
+    val stalled : Int = 0,
+    val stalls : Int = 0,
+    val throwaways : Int = 0
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

@@ -52,6 +52,17 @@
     <string name="pickup">Click on the player who picks up the disc</string>
     <string name="our_TO">Our Timeout</string>
     <string name="opp_TO">Opponent Timeout</string>
+    <string name="goals">Goals</string>
+    <string name="assists">Assists</string>
+    <string name="passes">Passes</string>
+    <string name="catches">Catches</string>
+    <string name="drops">Drops</string>
+    <string name="throwaways">Throwaways</string>
+    <string name="ds">Ds</string>
+    <string name="stalls">Stalls</string>
+    <string name="times_stalled">Times Stalled</string>
+    <string name="callahans">Callahans</string>
+    <string name="callahans_thrown">Callahans Thrown</string>
     <string name="welcome_text">Welcome to UltiHub!\n\nTo create a team, click on the
     "create new team" button in the bottom left hand corner.\n\nTo view a team, click
     on the team\'s name from the list on the left.  From there you will be able to

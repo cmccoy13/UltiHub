@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.live_game.*
 class TeamDetailActivity : AppCompatActivity() {
 
     lateinit var tournamentList : MutableList<Tournament>
-    lateinit var playerList : MutableList<Player>
+    lateinit var playerList : List<Player>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class TeamDetailActivity : AppCompatActivity() {
         }
 
         teamStatsButton.setOnClickListener{
-            startActivity(Intent(this, StatsActivity::class.java))
+            startActivity(Intent(this, StatsActivity::class.java).putExtra("teamName", name))
         }
 
         tournamentRef.addValueEventListener(object : ValueEventListener {
@@ -96,7 +96,7 @@ class TeamDetailActivity : AppCompatActivity() {
                         it.getValue(PlayerResponse::class.java)
                     }
 
-                    val playerList = players.map(PlayerResponse::mapToPlayer)
+                    playerList = players.map(PlayerResponse::mapToPlayer)
 
                     playerListRecycler.layoutManager = LinearLayoutManager(baseContext)
                     playerListRecycler.adapter = PlayerAdapter(playerList, baseContext, name)
