@@ -16,9 +16,10 @@ class OffenseFragment : Fragment() {
     private var posessionIndex = 0
 
     companion object {
-        fun newInstance(playerList: ArrayList<String>): OffenseFragment {
+        fun newInstance(pickupIndex: Int, playerList: ArrayList<String>): OffenseFragment {
 
             val args = Bundle()
+            val pickupPlayer = pickupIndex
             val nameList = ArrayList<String>()
             nameList.add(playerList[0])
             nameList.add(playerList[1])
@@ -28,6 +29,7 @@ class OffenseFragment : Fragment() {
             nameList.add(playerList[5])
             nameList.add(playerList[6])
             args.putStringArrayList("nameList", nameList)
+            args.putInt("pickupPlayer", pickupPlayer)
             val fragment = OffenseFragment()
             fragment.arguments = args
 
@@ -40,6 +42,7 @@ class OffenseFragment : Fragment() {
 
         val args = arguments!!
         players = args.getStringArrayList("nameList")
+        posessionIndex = args.getInt("pickupPlayer")
     }
 
     override fun onAttach(context: Context?) {
@@ -135,9 +138,13 @@ class OffenseFragment : Fragment() {
         goalButList.add(p6GoalBut)
         goalButList.add(p7GoalBut)
 
+        //Hide buttons from pickup player
+        catchButList[posessionIndex].visibility = View.INVISIBLE
+        dropButList[posessionIndex].visibility = View.INVISIBLE
+        goalButList[posessionIndex].visibility = View.INVISIBLE
+
 
         //### Create Button listeners ###
-
         //Special Buttons
         throwawayBut.setOnClickListener {
             passData(players[posessionIndex], "throwaway")

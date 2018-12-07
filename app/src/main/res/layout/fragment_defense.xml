@@ -7,71 +7,71 @@
 
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p6Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            android:layout_marginStart="6dp" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/p5Text" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/p7Text" app:layout_constraintEnd_toStartOf="@+id/p6D"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:layout_marginEnd="45dp"/>
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p5Text" android:textSize="30sp"
             android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/p4Text"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="6dp"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="6dp" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/p6Text" app:layout_constraintEnd_toStartOf="@+id/p5D"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:layout_marginEnd="45dp"/>
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p7Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            android:layout_marginStart="6dp" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/p6Text" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="2dp" app:layout_constraintEnd_toStartOf="@+id/p7D"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:layout_marginEnd="45dp"/>
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p4Text" android:textSize="30sp"
             app:layout_constraintTop_toBottomOf="@+id/p3Text" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginBottom="15dp"
+            android:layout_marginStart="6dp" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/p5Text" android:layout_marginTop="15dp"
             app:layout_constraintEnd_toStartOf="@+id/p4D" android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"/>
+    />
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p2Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" android:layout_marginTop="15dp"
+            android:layout_marginStart="6dp" android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/p1Text" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/p3Text" app:layout_constraintEnd_toStartOf="@+id/p2D"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:layout_marginEnd="45dp"/>
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p3Text" android:textSize="30sp"
             android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/p2Text"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="6dp"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="6dp"
             app:layout_constraintBottom_toTopOf="@+id/p4Text" android:layout_marginBottom="15dp"
             app:layout_constraintEnd_toStartOf="@+id/p3D" android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"/>
+    />
     <TextView
             android:text="@string/player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="55dp"
             android:id="@+id/p1Text" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="6dp" android:layout_marginStart="6dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="6dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="2dp" android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toTopOf="@+id/p2Text" app:layout_constraintEnd_toStartOf="@+id/p1D"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:layout_marginEnd="45dp"/>
     <Button
             android:text="@string/D"
             android:layout_width="100dp"

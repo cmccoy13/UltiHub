@@ -4,12 +4,15 @@
                                              android:layout_height="match_parent">
 
     <TextView
-            android:text="theirTimeouts"
-            android:layout_width="173dp"
-            android:layout_height="41dp"
-            android:id="@+id/opponentTimeoutsText" app:layout_constraintStart_toEndOf="@+id/opponentScoreText"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/opponentTeamText"
-            android:layout_marginBottom="38dp" app:layout_constraintBottom_toTopOf="@+id/rosterRecycler"/>
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:id="@+id/opponentTimeoutsText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/ourTimeoutsText" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/oppTOButton" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp" android:textSize="18sp" android:text="oppTOs"/>
     <android.support.v7.widget.RecyclerView
             android:layout_width="496dp"
             android:layout_height="398dp"
@@ -28,7 +31,7 @@
             android:layout_height="77dp"
             android:id="@+id/ourTeamText" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ourTimeoutsText"/>
+    />
     <TextView
             android:text="theirName"
             android:gravity="center"
@@ -36,8 +39,7 @@
             android:layout_height="77dp"
             android:id="@+id/opponentTeamText" android:textSize="30sp"
             android:layout_marginBottom="2dp" app:layout_constraintBottom_toTopOf="@+id/rosterRecycler"
-            app:layout_constraintStart_toEndOf="@+id/opponentTimeoutsText" android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="Clock"
@@ -45,17 +47,17 @@
             android:layout_width="265dp"
             android:layout_height="85dp"
             android:id="@+id/gameClockText" android:textSize="36sp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/ourScoreText"
-            app:layout_constraintEnd_toStartOf="@+id/opponentScoreText" android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="32dp" app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="0"
             android:gravity="center"
             android:layout_width="97dp"
             android:layout_height="61dp"
-            android:id="@+id/ourScoreText" app:layout_constraintStart_toEndOf="@+id/ourTimeoutsText"
+            android:id="@+id/ourScoreText"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gameClockText" android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toStartOf="@+id/gameClockText"
             android:textSize="36sp"/>
     <TextView
             android:text="0"
@@ -64,15 +66,18 @@
             android:layout_height="61dp"
             android:id="@+id/opponentScoreText"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toEndOf="@+id/gameClockText"
-            app:layout_constraintEnd_toStartOf="@+id/opponentTimeoutsText" android:textSize="36sp"/>
-    <TextView
-            android:text="ourTimeouts"
-            android:layout_width="173dp"
-            android:layout_height="41dp"
-            android:id="@+id/ourTimeoutsText" app:layout_constraintStart_toEndOf="@+id/ourTeamText"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ourScoreText" android:layout_marginEnd="2dp"
+            android:textSize="36sp"
     />
+    <TextView
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:id="@+id/ourTimeoutsText"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toEndOf="@+id/gameLayout" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/ourTOButton" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" app:layout_constraintEnd_toStartOf="@+id/opponentTimeoutsText"
+            android:layout_marginEnd="8dp" android:textSize="18sp" android:text="ourTOs"/>
     <FrameLayout
             android:layout_width="752dp"
             android:layout_height="562dp"
@@ -82,4 +87,22 @@
             app:layout_constraintEnd_toStartOf="@+id/rosterRecycler" android:layout_marginEnd="16dp">
 
     </FrameLayout>
+    <Button
+            android:text="@string/our_TO"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:id="@+id/ourTOButton" android:layout_marginStart="32dp"
+            app:layout_constraintStart_toEndOf="@+id/gameLayout" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rosterRecycler"
+            app:layout_constraintEnd_toStartOf="@+id/oppTOButton" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/ourTimeoutsText"/>
+    <Button
+            android:text="@string/opp_TO"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:id="@+id/oppTOButton" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/ourTOButton" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rosterRecycler" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/opponentTimeoutsText"/>
 </android.support.constraint.ConstraintLayout>
