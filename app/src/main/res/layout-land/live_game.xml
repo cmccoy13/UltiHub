@@ -27,20 +27,24 @@
     <TextView
             android:text="ourName"
             android:gravity="center"
-            android:layout_width="238dp"
-            android:layout_height="77dp"
+            android:layout_width="394dp"
+            android:layout_height="79dp"
             android:id="@+id/ourTeamText" android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-    />
+            app:layout_constraintBottom_toTopOf="@+id/gameLayout" android:layout_marginBottom="2dp"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintEnd_toStartOf="@+id/ourScoreText"
+            android:layout_marginEnd="16dp" app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:text="theirName"
             android:gravity="center"
-            android:layout_width="238dp"
+            android:layout_width="394dp"
             android:layout_height="77dp"
             android:id="@+id/opponentTeamText" android:textSize="30sp"
             android:layout_marginBottom="2dp" app:layout_constraintBottom_toTopOf="@+id/rosterRecycler"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/opponentScoreText" android:layout_marginStart="16dp"
+            app:layout_constraintHorizontal_bias="1.0"/>
     <TextView
             android:text="Clock"
             android:gravity="center"

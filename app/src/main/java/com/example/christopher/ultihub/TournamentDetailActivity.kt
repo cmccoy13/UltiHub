@@ -26,6 +26,8 @@ class TournamentDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tournament_detail)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         val teamName = intent.getStringExtra("teamName")
         val tournamentName = intent.getStringExtra("tournamentName")
 
@@ -110,13 +112,5 @@ class TournamentDetailActivity : AppCompatActivity() {
             // Holds the TextView that will add each animal to
             val tvGameName = view.itemNameText
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item!!.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return false
     }
 }

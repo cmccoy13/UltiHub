@@ -49,7 +49,7 @@ class GameFinishedFragment : Fragment() {
         val view = inflater?.inflate(R.layout.fragment_finished, container, false)
 
         val gameSummaryText = view.findViewById(R.id.gameSummaryText) as TextView
-        gameSummaryText.text = "$team win! Final score: $winScore - $loseScore"
+        gameSummaryText.text = "$team win!\nFinal score: $winScore - $loseScore"
 
         return view
     }

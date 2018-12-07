@@ -197,7 +197,7 @@ class OffenseFragment : Fragment() {
                 val thisIndex = goalButList.indexOf(goalBut)
                 passData(players[posessionIndex], "pass")
                 passData(players[posessionIndex], "assist")
-                passData(players[thisIndex], "drop")
+                passData(players[thisIndex], "goal")
                 dataPasser.newLineDefense()
             }
         }

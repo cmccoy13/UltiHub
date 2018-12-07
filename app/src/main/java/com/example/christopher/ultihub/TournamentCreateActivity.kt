@@ -13,6 +13,8 @@ class TournamentCreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_tournament)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         val teamName = intent.getStringExtra("teamName")
 
         button.setOnClickListener{
@@ -34,13 +36,5 @@ class TournamentCreateActivity : AppCompatActivity() {
                 //finish()
             }
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item!!.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return false
     }
 }

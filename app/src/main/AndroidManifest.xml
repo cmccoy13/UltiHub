@@ -30,7 +30,7 @@
                 android:screenOrientation="landscape" />
         <activity
                 android:name=".TournamentDetailActivity"
-                android:parentActivityName=".TeamDetailActivity"
+                android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
         <activity
                 android:name=".TeamCreateActivity"
@@ -38,24 +38,24 @@
                 android:screenOrientation="landscape" />
         <activity
                 android:name=".TournamentCreateActivity"
-                android:parentActivityName=".TeamDetailActivity"
+                android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
         <activity
                 android:name=".GameCreateActivity"
-                android:parentActivityName=".TournamentCreateActivity"
+                android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
         <activity
             android:name=".LiveGameActivity"
-            android:parentActivityName=".GameCreateActivity"
+            android:parentActivityName=".HomeActivity"
             android:screenOrientation="landscape" />
 
         <activity
                 android:name=".PlayerCreateActivity"
-                android:parentActivityName=".TeamDetailActivity"
+                android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
         <activity
                 android:name=".StatsActivity"
-                android:parentActivityName=".TeamDetailActivity"
+                android:parentActivityName=".HomeActivity"
                 android:screenOrientation="landscape" />
 
     </application>

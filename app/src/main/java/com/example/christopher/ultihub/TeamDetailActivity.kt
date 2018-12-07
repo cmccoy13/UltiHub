@@ -28,6 +28,8 @@ class TeamDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.team_detail)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         tournamentList = mutableListOf()
         playerList = mutableListOf()
 
@@ -193,4 +195,6 @@ class TeamDetailActivity : AppCompatActivity() {
             val tvPlayerName = view.itemNameText
         }
     }
+
+
 }

@@ -15,6 +15,8 @@ class TeamCreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_team)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         val submitButton = findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener{
             val name = teamNameInput.text.toString()

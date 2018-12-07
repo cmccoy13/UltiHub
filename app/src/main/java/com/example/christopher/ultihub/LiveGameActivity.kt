@@ -52,6 +52,8 @@ class LiveGameActivity : AppCompatActivity(), DataPasser {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.live_game)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         teamName = intent.getStringExtra("teamName")
         tournamentName = intent.getStringExtra("tournamentName")
         val opponent = intent.getStringExtra("opponent")
@@ -91,7 +93,7 @@ class LiveGameActivity : AppCompatActivity(), DataPasser {
             }
         })
 
-        gameRef.addValueEventListener(object : ValueEventListener {
+        gameRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val game = dataSnapshot.getValue(GameResponse::class.java)
@@ -428,7 +430,6 @@ class LiveGameActivity : AppCompatActivity(), DataPasser {
         }
 
         if(gameFinished) {
-
             when (ourScore > oppScore) {
                 true -> {
                     val frag = GameFinishedFragment.newInstance(teamName, ourScore, oppScore)
@@ -558,13 +559,5 @@ class LiveGameActivity : AppCompatActivity(), DataPasser {
         fun clearSelections() {
 
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item!!.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return false
     }
 }

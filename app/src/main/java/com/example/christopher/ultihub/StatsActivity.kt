@@ -32,6 +32,8 @@ class StatsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_stats)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         playerList = mutableListOf()
 
         val database = Utils.database
@@ -181,13 +183,5 @@ class StatsActivity : AppCompatActivity() {
                 TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT)
             )
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item!!.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
-        }
-        return false
     }
 }

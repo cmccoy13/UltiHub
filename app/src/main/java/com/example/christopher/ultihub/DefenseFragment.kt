@@ -172,6 +172,7 @@ class DefenseFragment : Fragment() {
         {
             callahanBut.setOnClickListener {
                 val thisIndex = callahanButList.indexOf(callahanBut)
+                passData(players[thisIndex], "goal")
                 passData(players[thisIndex], "callahan")
                 dataPasser.newLineDefense()
             }

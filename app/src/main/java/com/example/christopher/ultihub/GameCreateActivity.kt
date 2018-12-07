@@ -25,6 +25,8 @@ class GameCreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.create_game)
 
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_home_button)
+
         val teamName = intent.getStringExtra("teamName")
         val tournamentName = intent.getStringExtra("tournamentName")
 
