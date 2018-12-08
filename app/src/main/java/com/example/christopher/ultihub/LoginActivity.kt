@@ -16,35 +16,14 @@ import kotlinx.android.synthetic.main.login.*
 
 
 /*
-The login fields should be pre-populated, but the only login user/password at the moment is:
+The login fields should be pre-populated to allow you to login with a test user with some data.
+The login credentials for that account are:
 Email: test@test.com
 Password: password
 
-Ideally, this app will be run on a tablet.  The most important part of the app, the live
-play-by-play recording, is too complicated to fit comfortably on a phone screen.  Because of
-that, I have only tested/run my app on a tablet so far.  I recommend the Nexus 10.  If you
-run it on a phone, it will look terrible (I will fix that later).  Also, I currently have a problem
-when using the back button in the top left corner of the app, so it is usually best to use the
-system back button for now.
+This app has open signups though, so feel free to create a new account and test it on that.
 
-One notable thing that is missing from my app (besides the obvious parts) is a home button
-in the top right that will allow you to be taken back to the HomeActivity from any screen.
-The app has a pretty linear flow to it, which is why I implemented it the way I did, but I
-still want there to be an easy way to get to the home screen at all times.
-
-Final note about the SDKs/APIs:
-
-Originally I planned on using a firebase database along with the Google Maps and Weather APIs.
-I thought it would be cool to use Google Maps to record exactly where your games/tournaments
-were taking place and to use the Weather API to track wind speeds.  I decided that, if anything,
-including these things would just make the app more of a hassle to use and they would detract
-from what the app is supposed to be: a play-by-play and stat tracking app for teams and players.
-I talked with a lot of teammates about my development of this app and they said that maps and weather
-data is unneccessary.  They also suggested that you should be able to log into an account to get
-into the app so that you can access your team stats from anywhere (we currently use a similar app
-that stores everything locally, so you can only view your stats if you have the one specific iPad).
-Because of all this feedback, I decided to add firebase authentication instead of Google Maps and
-Weather.
+I would recommend running this on the Nexus 10 tablet emulator.
  */
 
 class LoginActivity : AppCompatActivity() {

@@ -1,6 +1,7 @@
 package com.example.christopher.ultihub
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
@@ -65,123 +67,103 @@ class StatsActivity : AppCompatActivity() {
 
     fun createTable() {
         /* Create a new row to be added. */
+
+        val nameIndex = TextView(this)
+        nameIndex.text
+
         for (player in playerList) {
             val tr = TableRow(this)
-            tr.layoutParams = TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f)
-            tr.gravity
+            val trParams = TableLayout.LayoutParams(table.width, TableRow.LayoutParams.WRAP_CONTENT)
+            tr.layoutParams = trParams
+
+            val params = TableRow.LayoutParams(table.width/(playerList.size), TableRow.LayoutParams.MATCH_PARENT, 1.0f)
 
             val name = TextView(this)
             name.text = player.name
             name.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            name.gravity = 1
             name.textSize = 18f
-            name.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(name)
+            name.layoutParams = params
+            name.setTypeface(null, Typeface.BOLD)
+            tr.addView(name, params)
 
             val goals = TextView(this)
             goals.text = player.goals.toString()
             goals.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            goals.gravity = 1
             goals.textSize = 18f
-            goals.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(goals)
+            goals.layoutParams = params
+            tr.addView(goals, params)
 
             val assists = TextView(this)
             assists.text = player.assists.toString()
             assists.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            assists.gravity = 1
             assists.textSize = 18f
-            assists.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(assists)
+            assists.layoutParams = params
+            tr.addView(assists, params)
 
             val passes = TextView(this)
             passes.text = player.passes.toString()
             passes.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            passes.gravity = 1
             passes.textSize = 18f
-            passes.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(passes)
+            passes.layoutParams = params
+            tr.addView(passes, params)
 
             val catches = TextView(this)
             catches.text = player.catches.toString()
             catches.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            catches.gravity = 1
             catches.textSize = 18f
-            catches.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(catches)
+            catches.layoutParams = params
+            tr.addView(catches, params)
 
             val drops = TextView(this)
             drops.text = player.drops.toString()
             drops.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            drops.gravity = 1
             drops.textSize = 18f
-            drops.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(drops)
+            drops.layoutParams = params
+            tr.addView(drops, params)
 
             val throwaways = TextView(this)
             throwaways.text = player.throwaways.toString()
             throwaways.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            throwaways.gravity = 1
             throwaways.textSize = 18f
-            throwaways.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(throwaways)
+            throwaways.layoutParams = params
+            tr.addView(throwaways, params)
 
             val ds = TextView(this)
             ds.text = player.Ds.toString()
             ds.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            ds.gravity = 1
             ds.textSize = 18f
-            ds.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(ds)
+            ds.layoutParams = params
+            tr.addView(ds, params)
 
             val stalls = TextView(this)
             stalls.text = player.stalls.toString()
             stalls.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            stalls.gravity = 1
             stalls.textSize = 18f
-            stalls.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(stalls)
+            stalls.layoutParams = params
+            tr.addView(stalls, params)
 
             val timesStalled = TextView(this)
             timesStalled.text = player.stalled.toString()
             timesStalled.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            timesStalled.gravity = 1
             timesStalled.textSize = 18f
-            timesStalled.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(timesStalled)
+            timesStalled.layoutParams = params
+            tr.addView(timesStalled, params)
 
             val callahans = TextView(this)
             callahans.text = player.callahans.toString()
             callahans.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            callahans.gravity = 1
             callahans.textSize = 18f
-            callahans.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(callahans)
+            callahans.layoutParams = params
+            tr.addView(callahans, params)
 
             val callahansThrown = TextView(this)
             callahansThrown.text = player.callahansThrown.toString()
             callahansThrown.textAlignment = View.TEXT_ALIGNMENT_CENTER
-            callahansThrown.gravity = 1
             callahansThrown.textSize = 18f
-            callahansThrown.layoutParams =
-                    TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT)
-            tr.addView(callahansThrown)
+            callahansThrown.layoutParams =params
+            tr.addView(callahansThrown, params)
 
-            table.addView(
-                tr,
-                TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT)
-            )
+            table.addView(tr, trParams)
         }
     }
 }
